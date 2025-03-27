@@ -26,8 +26,14 @@ LOGS =>
 
 */
 
-function triangles() {
-  
+function triangles(num) {
+  var triangleCount = '#';
+  var incrementCount = 0;
+  while(incrementCount < num){
+    console.log(triangleCount);
+    triangleCount = triangleCount + '#';
+    incrementCount++
+  }
 }
 
 
