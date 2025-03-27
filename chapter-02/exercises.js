@@ -54,7 +54,41 @@ on the number:
 */
 
 function fizzBuzz(start, end) {
-  
+  var startInc = start;
+  var endInc = end;
+  if(start < end){
+    while(start <= end){
+      if(start % 3 === 0 && start % 5 === 0){
+        console.log('fizzbuzz');
+        start++;
+      } else if(start % 3 === 0){
+        console.log('fizz');
+        start++;
+      } else if(start % 5 === 0){
+        console.log('buzz');
+        start++;
+      } else {
+        console.log(start);
+        start++
+      }
+    }
+  } else if (end < start){
+    while(end <= start){
+      if(end % 3 === 0 && start % 5 === 0){
+          console.log('fizzbuzz');
+          end++;
+        } else if(end % 3 === 0){
+          console.log('fizz');
+          end++;
+        } else if(end % 5 === 0){
+          console.log('buzz');
+          end++;
+        } else {
+          console.log(end);
+          end++
+  }
+ }
+}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -88,8 +122,18 @@ LOGS =>
 */
 
 function drawChessboard(x) {
-
-
+  var chessboard = '';
+  for(var i = 0; i < x; i++){
+    for(var j = 0; j < x; j++){
+      if((i + j) % 2 !== 0){
+        chessboard += '#';
+      } else {
+        chessboard += ' ';
+      }
+    }
+    chessboard += '\n';
+  }
+  console.log(chessboard);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
