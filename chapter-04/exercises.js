@@ -2,7 +2,23 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range() {
+function range(start, end, step=1, output=[]) {
+  // base
+  if(start === end){
+    return output;
+  }
+
+  if(step < 0 && start < end){
+    return output;
+  }
+
+  // recursion
+  if(output.length === 0){
+    output.push(start);
+  }
+  output.push(start + step);
+  return range(start + step, end, step, output);
+
 
 }
 
