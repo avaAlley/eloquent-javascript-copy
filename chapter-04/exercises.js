@@ -26,7 +26,15 @@ function range(start, end, step=1, output=[]) {
 // sum /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function sum() {
+function sum(array, output=0) {
+  // base
+  if(array.length === 0){
+    return output;
+  }
+
+  // recursion
+  output += array[0];
+  return sum(array.slice(1), output);
 
 }
 
@@ -34,7 +42,17 @@ function sum() {
 // reverseArray ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArray() {
+function reverseArray(array, output=[]) {
+  // base
+  if(array.length === 0){
+    return output;
+
+  }
+
+  // recursion
+
+  output.unshift(array[0]);
+  return reverseArray(array.slice(1), output);
 
 }
 
@@ -42,7 +60,8 @@ function reverseArray() {
 // reverseArrayInPlace /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArrayInPlace() {
+function reverseArrayInPlace(array) {
+  return array.reverse()
 
 }
 
