@@ -81,10 +81,18 @@ function arrayToList(array) {
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray(object) {
-  let newArr = Object.values(object);
-  return newArr;
-
+function listToArray(list, array=[]) {
+  // base
+  if(list.rest === null){
+    array.push(list.value);
+    return array;
+  }
+  
+  // recursion
+  array.push(list.value);
+  
+  return listToArray(list.rest, array);
+  
 }
 
 ////////////////////////////////////////////////////////////////////////////////
