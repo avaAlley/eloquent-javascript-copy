@@ -104,31 +104,59 @@ function prepend(value, list) {
   let listObj = { value: value, rest: list };
   return listObj;
 
-  // let listObj = {}
-  // listObj.value = value;
-  // listObj.rest = list;
-  // return listObj;
-
-  // list = { value: value, rest: list }
-  // return list;
-
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-// function nth(list, value) {
+function nth(list, value, count=0) {
+  // base
+  let nthValue;
+  if(value === count){
+    return list.value;
+  }
+  if(value < 0){
+    return undefined;
+  }
 
+  // recursion
+  if(value !== count){
+    count++
+  }
 
-// }
+  return nth(list.rest, value, count);
+
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual() {
+function deepEqual(x, y) {
+  // determine if x and y are NOT objects
+  if(typeof x !== 'object' && typeof y !== 'object'){
+    return x === y;
+  }
+  if(typeof x !== 'object' || typeof y !== 'object'){
+    return false;
+  }
+  // create arrays of each inputs keys
+  let xKeys = Object.keys(x);
+  let yKeys = Object.keys(y);
 
+  if(xKeys.length !== yKeys.length){
+    return false;
+  }
+
+  // iterate to determine if array keys match and values at keys match
+
+  for(let i = 0; i < xKeys.length; i++){
+    if(!yKeys.includes(xKeys[i]) || !deepEqual(x[xKeys[i]], y[xKeys[i]])){
+      return false;
+    }
+  }
+  return true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
