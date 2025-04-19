@@ -23,15 +23,49 @@ function loop(start, test, update, body) {
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every() {
-
+function every(array, test) {
+  for(let i = 0; i < array.length; i++){
+    if(!test(array[i])){
+      return false;
+    }
+  }
+  return true;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
+function dominantDirection(string) {
+  // create variable ltr and initialize it as empty array
+  let ltr = [];
+  let rtl = [];
+  let ttb = [];
+
+  // iterate over input string using for loop
+  for(let i = 0; i < string.length; i++){
+    // every iteration, create a variable script and assign it to result of invoking characterScript on the current character's char code
+    let script = characterScript(string.charCodeAt(i)); // will return the object from scripts
+
+    // contingency if the script did not return anything from the array
+    if(script !== null){
+      if(script.direction === 'ltr'){
+        ltr.push(script);
+      } else if (script.direction === 'rtl'){
+        rtl.push(script);
+      } else {
+        ttb.push(script);
+      }
+    }
+
+  }
+  if(ltr.length > rtl.length && ltr.length > ttb.length){
+    return 'ltr';
+  } else if(rtl.length > ltr.length && rtl.length > ttb.length){
+    return 'rtl';
+  } else if(ttb.length > ltr.length && ttb.length > rtl.length){
+    return 'ttb';
+  }
 
 }
 
